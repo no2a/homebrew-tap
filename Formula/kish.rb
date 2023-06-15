@@ -5,20 +5,20 @@
 class Kish < Formula
   desc "kish client"
   homepage ""
-  version "0.0.11"
+  version "0.0.12"
 
   on_macos do
-    if Hardware::CPU.intel?
-      url "https://github.com/no2a/kish/releases/download/v0.0.11/kish_0.0.11_darwin_amd64.tar.gz"
-      sha256 "bd09016bcd259e8cac137b12ac7dff8fd556805eb50fff444a8aabc2da5446a8"
+    if Hardware::CPU.arm?
+      url "https://github.com/no2a/kish/releases/download/v0.0.12/kish_0.0.12_darwin_arm64.tar.gz"
+      sha256 "2a682e29cc8c12b82581e4b3954e3e334ac45577be8b310e3e53bc4bc80f2b4b"
 
       def install
         bin.install "kish"
       end
     end
-    if Hardware::CPU.arm?
-      url "https://github.com/no2a/kish/releases/download/v0.0.11/kish_0.0.11_darwin_arm64.tar.gz"
-      sha256 "9346299810735e47e09816c399ddd84e8c2d7165026395f977ebee2084214506"
+    if Hardware::CPU.intel?
+      url "https://github.com/no2a/kish/releases/download/v0.0.12/kish_0.0.12_darwin_amd64.tar.gz"
+      sha256 "4fb45fd8209a357c798b9eba7b3b6735a354634b10c1f319db620740fcb35ce4"
 
       def install
         bin.install "kish"
@@ -28,8 +28,8 @@ class Kish < Formula
 
   on_linux do
     if Hardware::CPU.intel?
-      url "https://github.com/no2a/kish/releases/download/v0.0.11/kish_0.0.11_linux_amd64.tar.gz"
-      sha256 "61637fa53d2e9218ada1b3263dbcbc14496b4f90d5e2b44b41302de2630ccb8c"
+      url "https://github.com/no2a/kish/releases/download/v0.0.12/kish_0.0.12_linux_amd64.tar.gz"
+      sha256 "b6692d1ae4f0973eac509272315999466ca6441084aa821c2e0baf66334f10f4"
 
       def install
         bin.install "kish"

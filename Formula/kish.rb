@@ -5,36 +5,33 @@
 class Kish < Formula
   desc "kish client"
   homepage ""
-  version "0.0.18"
+  version "0.0.21"
 
   on_macos do
-    on_intel do
-      url "https://github.com/no2a/kish/releases/download/v0.0.18/kish_0.0.18_darwin_amd64.tar.gz"
-      sha256 "0ecfd60ea0b939ff02e424ff760b6092d96934fcef0d7f229216ecc66062624c"
+    if Hardware::CPU.intel?
+      url "https://github.com/no2a/kish/releases/download/v0.0.21/kish_0.0.21_darwin_amd64.tar.gz"
+      sha256 "0a975bedf01881dcb4a792b065d16eb22e6a28ba948870a0cd0e4a3c4d6b4fde"
 
-      def install
+      define_method(:install) do
         bin.install "kish"
       end
     end
-    on_arm do
-      url "https://github.com/no2a/kish/releases/download/v0.0.18/kish_0.0.18_darwin_arm64.tar.gz"
-      sha256 "784daf4dd7cd45fb6d1d3eae85535eed6608c521fabb45db4f835168526f08c5"
+    if Hardware::CPU.arm?
+      url "https://github.com/no2a/kish/releases/download/v0.0.21/kish_0.0.21_darwin_arm64.tar.gz"
+      sha256 "7bb8aff5733cc093f609e55f796a5f7bf75ea594934e5606c6441596b6f6faa5"
 
-      def install
+      define_method(:install) do
         bin.install "kish"
       end
     end
   end
 
   on_linux do
-    on_intel do
-      if Hardware::CPU.is_64_bit?
-        url "https://github.com/no2a/kish/releases/download/v0.0.18/kish_0.0.18_linux_amd64.tar.gz"
-        sha256 "66d3cbb61fee291e053f04a0aad20e7dedc309e5117c03b095584746cf41bdeb"
-
-        def install
-          bin.install "kish"
-        end
+    if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
+      url "https://github.com/no2a/kish/releases/download/v0.0.21/kish_0.0.21_linux_amd64.tar.gz"
+      sha256 "3098c2451e73297be91a00b22e169df3e0be1c492deaface75107bff3290bc88"
+      define_method(:install) do
+        bin.install "kish"
       end
     end
   end
